@@ -1,13 +1,12 @@
 # Portfolio Backend API
 
-Node.js/Express backend for storing contact form submissions in MongoDB.
+Simple Node.js/Express backend for receiving contact form submissions.
 
 ## 🛠️ Tech Stack
 
 - **Runtime**: Node.js
 - **Framework**: Express.js
-- **Database**: MongoDB (MongoDB Atlas)
-- **ORM**: Mongoose
+- **No Database**: Data is logged to console (you can view it in server logs)
 
 ## 📦 Installation
 
@@ -15,17 +14,6 @@ Node.js/Express backend for storing contact form submissions in MongoDB.
 cd backend
 npm install
 ```
-
-## ⚙️ Configuration
-
-1. Create a `.env` file in the `backend` folder:
-
-```env
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/portfolio?retryWrites=true&w=majority
-PORT=5000
-```
-
-2. Get your MongoDB URI from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 
 ## 🚀 Running Locally
 
@@ -43,9 +31,10 @@ Server runs on: `http://localhost:5000`
 
 ### GET `/`
 Health check endpoint
+- Response: `"Backend running"`
 
-### POST `/api/contacts`
-Create a new contact submission
+### POST `/api/contact`
+Receive contact form submission
 
 **Request Body:**
 ```json
@@ -61,27 +50,11 @@ Create a new contact submission
 ```json
 {
   "success": true,
-  "message": "Contact saved successfully",
-  "data": {
-    "_id": "...",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "phone": "1234567890",
-    "message": "Hello!",
-    "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2024-01-01T00:00:00.000Z"
-  }
+  "message": "Message received successfully"
 }
 ```
 
-### GET `/api/contacts`
-Get all contacts (sorted by newest first)
-
-### GET `/api/contacts/:id`
-Get a specific contact by ID
-
-### DELETE `/api/contacts/:id`
-Delete a contact by ID
+**Note:** Contact form data is logged to the console/server logs.
 
 ## 🌐 Deployment
 
@@ -94,5 +67,4 @@ Recommended platforms:
 
 ## 📝 Environment Variables
 
-- `MONGODB_URI`: MongoDB connection string
-- `PORT`: Server port (default: 5000)
+None required! The server runs on port 5000 by default.
